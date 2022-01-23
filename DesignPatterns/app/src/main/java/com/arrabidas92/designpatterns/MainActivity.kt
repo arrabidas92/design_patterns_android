@@ -2,6 +2,8 @@ package com.arrabidas92.designpatterns
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.arrabidas92.designpatterns.observer.ConcreteObservable
+import com.arrabidas92.designpatterns.observer.ConcreteObserver
 import com.arrabidas92.designpatterns.strategy.ClientStrategy
 import com.arrabidas92.designpatterns.strategy.DieselStrategy
 import com.arrabidas92.designpatterns.strategy.ElectricStrategy
@@ -23,6 +25,24 @@ class MainActivity : AppCompatActivity() {
         val clientC = ClientStrategy(GasolineStrategy())
         clientC.fillUp()
 
-        // - Strategy pattern
+        // - Observer pattern
+
+        val observable = ConcreteObservable()
+        val firstObserver = ConcreteObserver("1", observable)
+        val secondObserver = ConcreteObserver("2", observable)
+
+        observable.add(firstObserver)
+        observable.add(secondObserver)
+
+        observable.setState(1)
+        observable.setState(2)
+
+        observable.remove(firstObserver)
+
+        observable.setState(3)
+
+        observable.remove(secondObserver)
+
+        observable.setState(4)
     }
 }
