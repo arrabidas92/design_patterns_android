@@ -2,6 +2,9 @@ package com.arrabidas92.designpatterns
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.arrabidas92.designpatterns.decorator.CaramelDecorator
+import com.arrabidas92.designpatterns.decorator.ChocolateDecorator
+import com.arrabidas92.designpatterns.decorator.Espresso
 import com.arrabidas92.designpatterns.observer.ConcreteObservable
 import com.arrabidas92.designpatterns.observer.ConcreteObserver
 import com.arrabidas92.designpatterns.strategy.ClientStrategy
@@ -44,5 +47,27 @@ class MainActivity : AppCompatActivity() {
         observable.remove(secondObserver)
 
         observable.setState(4)
+
+        // - Decorator pattern
+
+        val espresso = Espresso()
+        println(espresso.getDescription())
+        println(espresso.getCost())
+
+        val espressoWithCaramel = CaramelDecorator(espresso)
+        println(espressoWithCaramel.getDescription())
+        println(espressoWithCaramel.getCost())
+
+        val espressoWithChocolate = ChocolateDecorator(espresso)
+        println(espressoWithChocolate.getDescription())
+        println(espressoWithChocolate.getCost())
+
+        val espressoWithChocolateCaramel = ChocolateDecorator(espressoWithCaramel)
+        println(espressoWithChocolateCaramel.getDescription())
+        println(espressoWithChocolateCaramel.getCost())
+
+        val espressoWithCaramelChocolate = CaramelDecorator(espressoWithChocolate)
+        println(espressoWithCaramelChocolate.getDescription())
+        println(espressoWithCaramelChocolate.getCost())
     }
 }
