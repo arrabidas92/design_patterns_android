@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.arrabidas92.designpatterns.decorator.CaramelDecorator
 import com.arrabidas92.designpatterns.decorator.ChocolateDecorator
 import com.arrabidas92.designpatterns.decorator.Espresso
+import com.arrabidas92.designpatterns.factory.ResourceServerFactory
 import com.arrabidas92.designpatterns.observer.ConcreteObservable
 import com.arrabidas92.designpatterns.observer.ConcreteObserver
 import com.arrabidas92.designpatterns.strategy.ClientStrategy
@@ -69,5 +70,11 @@ class MainActivity : AppCompatActivity() {
         val espressoWithCaramelChocolate = CaramelDecorator(espressoWithChocolate)
         println(espressoWithCaramelChocolate.getDescription())
         println(espressoWithCaramelChocolate.getCost())
+
+        // - Factory pattern
+
+        val factory = ResourceServerFactory(ResourceServerFactory.Environment.dev)
+        val resourceServerCreated = factory.createResourceServer()
+        println(resourceServerCreated.pathURL)
     }
 }
