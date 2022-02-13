@@ -1,7 +1,10 @@
 package com.arrabidas92.designpatterns
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.arrabidas92.designpatterns.abstractfactory.AbstractFactoryClient
+import com.arrabidas92.designpatterns.abstractfactory.ConcreteFactory1
+import com.arrabidas92.designpatterns.abstractfactory.ConcreteFactory2
 import com.arrabidas92.designpatterns.decorator.CaramelDecorator
 import com.arrabidas92.designpatterns.decorator.ChocolateDecorator
 import com.arrabidas92.designpatterns.decorator.Espresso
@@ -76,5 +79,13 @@ class MainActivity : AppCompatActivity() {
         val factory = ResourceServerFactory(ResourceServerFactory.Environment.dev)
         val resourceServerCreated = factory.createResourceServer()
         println(resourceServerCreated.pathURL)
+
+        // - Abstract Factory pattern
+
+        println("Client: Testing client code with the first factory type:")
+        AbstractFactoryClient.someClientCode(ConcreteFactory1())
+
+        println("Client: Testing the same client code with the second factory type:")
+        AbstractFactoryClient.someClientCode(ConcreteFactory2())
     }
 }
