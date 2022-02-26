@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.arrabidas92.designpatterns.abstractfactory.AbstractFactoryClient
 import com.arrabidas92.designpatterns.abstractfactory.ConcreteFactory1
 import com.arrabidas92.designpatterns.abstractfactory.ConcreteFactory2
+import com.arrabidas92.designpatterns.command.CommandClient
 import com.arrabidas92.designpatterns.decorator.CaramelDecorator
 import com.arrabidas92.designpatterns.decorator.ChocolateDecorator
 import com.arrabidas92.designpatterns.decorator.Espresso
@@ -87,5 +88,9 @@ class MainActivity : AppCompatActivity() {
 
         println("Client: Testing the same client code with the second factory type:")
         AbstractFactoryClient.someClientCode(ConcreteFactory2())
+
+        // - Command pattern
+
+        CommandClient.testCommand()
     }
 }
